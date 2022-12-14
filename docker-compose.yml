@@ -1,0 +1,56 @@
+version: "3.3"
+services:
+  gophish:
+    image: gophish/gophish:latest
+    container_name: gophish
+    restart: unless-stopped
+    environment:
+      - ADMIN_LISTEN_URL=0.0.0.0:3333
+      - ADMIN_USE_TLS=false # must be disabled when reverse proxy in use
+      - PHISH_LISTEN_URL=0.0.0.0:80
+      #- ADMIN_TRUSTED_ORIGINS=gophish.phishdock.com
+      - GOPHISH_INITIAL_ADMIN_PASSWORD=phishdock
+    ports:
+      - 127.0.0.1:3333:3333
+    volumes:
+      - type: bind
+        source: ./docker-volumes/gophish/gophish.db
+        target: /opt/gophish/gophish.db
+      - ./docker-volumes/gophish/endpoint:/opt/gophish/static/endpoint
+
+  npm:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: nginx-proxy-manager
+    hostname: nginx-proxy-manager
+    user: 0:1000
+    environment:
+      - TZ=Europe/Berlin
+    ports:
+      - 443:443/tcp
+      - 80:80/tcp
+      - 127.0.0.1:81:81/tcp
+    restart: unless-stopped
+    volumes:
+      - ./docker-volumes/npm/data:/data
+      - ./docker-volumes/npm/letsencrypt:/etc/letsencrypt
+
+  web:
+    image: nginx:latest
+    hostname: nginx
+    volumes:
+      - ./docker-volumes/nginx/www-data:/var/www
+      - ./docker-volumes/nginx/nginx-conf:/etc/nginx/conf.d
+      - ./docker-volumes/nginx/logs:/var/log/nginx
+    links:
+        - php
+    container_name: nginx
+    restart: unless-stopped
+
+  php:
+    image: php:8-fpm-alpine
+    hostname: php
+    volumes:
+      - ./docker-volumes/nginx/www-data:/var/www
+    container_name: php
+    restart: unless-stopped
+    working_dir: /var/www

@@ -1,0 +1,5 @@
+/docker-volumes/gophish/*
+/docker-volumes/nginx/logs/*
+/docker-volumes/npm/letsencrypt/*
+/docker-volumes/npm/data/logs/*
+/docker-volumes/npm/data/letsencrypt-acme-challenge/*
