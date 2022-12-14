@@ -1,3 +1,5 @@
+![Alt text](logo.png "Optional Title")
+
 ## Usage
 
 Just spawn up the PhishDock infrastructure via:
