@@ -18,7 +18,7 @@ This will spawn up the following containers:
 - `landing.phishdock.com` is a proxy host for Gophish landing pages provided by the Gophish docker container on TCP/80. 
 - `awareness.phishdock.com` is a proxy host for the nginx docker container. It serves the purpose of being able to create custom awareness pages to redirect on. For example after a victim submitted data on a Gophish landing page. The victim may then be redirected to this nginx docker container via NPM reverse proxy.
 
-SSL/TLS was not configured on purpose. Please adjust the NPM reverse configuration to your needs.
+SSL/TLS was not configured on purpose within the NPM container. Also Gophish was not configured at all. Please adjust to your needs and setup valid Let's Encrypt SSL certificates as well as a general Gophish campaign with Mailgun or Sendgrid as SMTP relay servers. Do not forget to configure DNS (A-records, MX-records, PTR-record, SPF, DKIM, DMARC) as well as test your setup.
 
 ## Default credentials
 
