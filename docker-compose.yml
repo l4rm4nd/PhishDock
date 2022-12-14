@@ -9,7 +9,7 @@ services:
       - ADMIN_USE_TLS=false # must be disabled when reverse proxy in use
       - PHISH_LISTEN_URL=0.0.0.0:80
       #- ADMIN_TRUSTED_ORIGINS=gophish.phishdock.com
-      - GOPHISH_INITIAL_ADMIN_PASSWORD=phishdock
+      - GOPHISH_INITIAL_ADMIN_PASSWORD=PhishDock!
     ports:
       - 127.0.0.1:3333:3333
     volumes:
