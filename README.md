@@ -1,4 +1,6 @@
-![Alt text](logo.png "Optional Title")
+<p align="center">
+  <img src="logo.png"/>
+</p>
 
 ## Usage
 
