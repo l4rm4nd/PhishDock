@@ -2,6 +2,8 @@
   <img src="logo.png"/>
 </p>
 
+Automated Docker infrastructure with Gophish, Nginx Proxy Manager, Nginx and PHP
+
 ## Usage
 
 Just spawn up the PhishDock infrastructure via:
@@ -14,10 +16,14 @@ docker compose up
 
 This will spawn up the following containers:
 
-- Nginx Proxy Manager # Reverse Proxy with GUI
-- Gophish # Phishing Framework with GUI
-- Nginx # Webserver for additional landing pages
-- PHP # Optional PHP support for the nginx webserver
+- Nginx Proxy Manager
+  -  Used as SSL reverse proxy. Supports a management UI, Let's Encrypt, automated SSL certificate renewals and various APIs of popular DNS providers.
+- Gophish
+  - Used as phishing framework. Supports a management UI to create phishing campaignes, landing pages, site cloning etc.
+- Nginx
+  - Optional web server to provide awareness sites, redirect sites or custom web pages.
+- PHP
+  - PHP support for the optional nginx web server
 
 **Note**: Nginx Proxy Manager is pre-configured and already defines three proxy hosts:
 - `gophish.phishdock.com` is a proxy host for the Gophish admin backend UI. It uses an access list and is only accessible from local LAN IP ranges.
