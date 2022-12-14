@@ -19,7 +19,7 @@ This will spawn up the following containers:
 - Nginx Proxy Manager
   -  Used as SSL reverse proxy. Supports a management UI, Let's Encrypt, automated SSL certificate renewals and various APIs of popular DNS providers.
 - Gophish
-  - Used as phishing framework. Supports a management UI to create phishing campaignes, landing pages, site cloning etc.
+  - Used as phishing framework. Supports a management UI to create phishing campaigns, landing pages, site cloning etc.
 - Nginx
   - Optional web server to provide awareness sites, redirect sites or custom web pages.
 - PHP
@@ -44,7 +44,7 @@ The default login credentials are:
 example@phishdock.com:PhishDock!
 ````
 
-**Note**: You must change this default password at first login.
+**Note**: You may change this default password at first login.
 
 ### Gophish
 
