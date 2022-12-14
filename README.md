@@ -3,7 +3,9 @@
 Just spawn up the PhishDock infrastructure via:
 
 ````
-docker compose up -d
+git clone https://github.com/l4rm4nd/PhishDock
+cd PhishDock
+docker compose up
 ````
 
 This will spawn up the following containers:
