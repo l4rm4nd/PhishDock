@@ -41,7 +41,7 @@ The Gophish instance will be available at http://127.0.0.1:3333.
 The default login credentials are:
 
 ````
-admin:phishdock
+admin:PhishDock!
 ````
 
 **Note**: You must change this default password at first login.
