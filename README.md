@@ -58,6 +58,18 @@ admin:PhishDock!
 
 **Note**: You must change this default password at first login.
 
+## Goreport
+
+After finishing a phishing campaign, one can use Goreport to extract statistics via the Gophish API. I've forked the Goreport GitHub repository and added support for Docker. The image is built by GitHub Actions and available on Dockerhub at `l4rm4nd/goreport`.
+
+You can export a report via the following Docker run command:
+
+````
+docker run -it --rm -v $(pwd):/opt goreport --id 26,29-33,54 --format excel --combine --config /opt/goreport.config
+````
+
+**Note**: Please adjust the `goreport.config` file to your needs. Place your API keys and validate the Gophish URL (HTTP vs. HTTPS).
+
 ## Considerations
 
 ### SSL Proxying
