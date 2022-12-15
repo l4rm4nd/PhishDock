@@ -68,7 +68,7 @@ You can export a report via the following Docker run command:
 docker run -it --rm -v $(pwd):/opt goreport --id 26,29-33,54 --format excel --combine --config /opt/goreport.config
 ````
 
-**Note**: Please adjust the `goreport.config` file to your needs. Place your API keys and validate the Gophish URL (HTTP vs. HTTPS).
+**Note**: Please adjust the `goreport.config` file to your needs. Place your API keys and validate the Gophish `gp_host` URL (HTTP vs. HTTPS). You may change `127.0.0.1` to the docker container name `gophish`. Should be resolved automatically.
 
 ## Considerations
 
