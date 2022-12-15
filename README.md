@@ -65,7 +65,7 @@ After finishing a phishing campaign, one can use Goreport to extract statistics 
 You can export a report via the following Docker run command:
 
 ````
-docker run -it --network=phishdock_default --rm -v $(pwd):/opt goreport --id <CAMPAIGN-ID> --format excel --combine --config /opt/goreport.config
+docker run -it --network=phishdock_default --rm -v $(pwd):/opt l4rm4nd/goreport --id <CAMPAIGN-ID> --format excel --combine --config /opt/goreport.config
 ````
 
 **Note**: Please adjust the `goreport.config` file to your needs. Place your API keys and validate the Gophish `gp_host` URL (HTTP vs. HTTPS).
