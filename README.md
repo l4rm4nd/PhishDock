@@ -60,6 +60,8 @@ admin:PhishDock!
 
 ## Considerations
 
+### SSL Proxying
+
 If you will use NPM to also proxy to the gophish admin backend on TCP/3333 with SSL, you must change the environment variables for gophish. In detail, when using a reverse proxy with SSL, the gophish admin backend on TCP/3333 must also run with SSL and you have to define your subdomain at `ADMIN_TRUSTED_ORIGINS` env variable. Otherwise, the login will brick and you won't be able to authenticate. Currently, plaintext HTTP is configured as default, which works only when no SSL certificates are in use. 
 
 If you want to proxy with SSL, modify the docker-compose.yml and adjust the following env variables for the gophish container:
@@ -68,3 +70,18 @@ If you want to proxy with SSL, modify the docker-compose.yml and adjust the foll
 - ADMIN_USE_TLS=true # set to true if you will use a reverse proxy with SSL; otherwise login will break
 - ADMIN_TRUSTED_ORIGINS=gophish.phishdock.com # set to your subdomain name if you will use a reverse proxy with SSL; otherwise login will break
 ````
+
+### Visitor Real IP Address
+
+It is usually recommended to put the gophish landing page behind Cloudflare CDN to obscure the phishing actor's server location. 
+
+If Cloudflare is used, you must uncomment the following configuration line at the proxy host's advanced section:
+
+````
+# if behind cloudflare, enable this
+real_ip_header CF-Connecting-IP;
+````
+
+Otherwise, gophish and the NPM logs in general will not obtain the correct IP address of your phishing victims. This will affect the phishing campaign's evaluation and IP analysis stats since the logged IP address will be one of Cloudflare's IPv4 or IPv6 range and not the real site visitor's IP address.
+
+If you do not use Cloudflare, you may have to define an other HTTP client header like `X-Forwarded-For` to obtain the visitor's real IP. This requires further testings.
